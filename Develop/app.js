@@ -10,6 +10,7 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 const { inherits } = require("util");
+const employeesArr = [];
 
 
 // Write code to use inquirer to gather information about the development team members,
@@ -98,6 +99,13 @@ function promptIntern() {
 ])
 .then(function(answers){
     console.log(answers);
+    let newEmp = new Intern (
+        answers.name,
+        answers.id,
+        answers.email,
+        answers.school
+        );
+        employeesArr.push(newEmp)
     continuePrompt();
 })
 }
@@ -149,7 +157,8 @@ function continuePrompt(){
         if (answers.continue === true) {
             return selectRole();
         }
-        renderHTML()
+        /// RENDER HTML
+        renderHTML(employeesArr)
     })
 }
 selectRole()
