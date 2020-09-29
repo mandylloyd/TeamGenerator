@@ -26,80 +26,132 @@ function selectRole() {
         }
     ])
         .then(async function (answer) {
-            if (answer.type ==="Engineer") {
-                await promptEngineer();
-            } if (answer.type ==="Intern") {
-                await promptIntern();
-            } if (answer.type ==="Manager") {
-                await promptManager();
+            if (answer.role ==="Engineer") {
+                promptEngineer();
+            } if (answer.role ==="Intern") {
+                promptIntern();
+            } if (answer.role ==="Manager") {
+                promptManager();
             }
         })
 }
 
-const questions = [{
-    type: "input", 
-    name: "name", 
-    message: "Please state the employee's name.",
-    default: "No name provided."
-}, 
-{ 
-    type: "input", 
-    name: "id", 
-    message: "Provide the employee's ID.",
-    default: "ID unlisted."
-}, 
-{ 
-    type: "input", 
-    name: "email", 
-    message: "Provide employee's email address.",
-    default: "email@none"
-}, ]
-
 function promptEngineer() {
-questions,
+    inquirer.prompt([
+    {
+        type: "input", 
+        name: "name", 
+        message: "Please state the employee's name.",
+        default: "No name provided."
+    }, 
+    { 
+        type: "input", 
+        name: "id", 
+        message: "Provide the employee's ID.",
+        default: "ID unlisted."
+    }, 
+    { 
+        type: "input", 
+        name: "email", 
+        message: "Provide employee's email address.",
+        default: "email@none"
+    },
     {
         type: 'input',
         name: 'gitHub',
-        message: "Enter the Engineer's gitHub username.",
-        when: (answers) => answers.role ==="Engineer"
+        message: "Enter the employee's gitHub username.",
+        when: (answers) => answers.role ==="Engineer",
     }, 
-    {
-        type: "confirm", 
-        name: "continue", 
-        message: "Would you like to add another employee?"
-    }
+])
+.then(function(answers){
+    console.log(answers);
+    continuePrompt();
+})
 }
 
 function promptIntern() {
- questions,
+    inquirer.prompt([
+    {
+        type: "input", 
+        name: "name", 
+        message: "Please state the employee's name.",
+        default: "No name provided."
+    }, 
+    { 
+        type: "input", 
+        name: "id", 
+        message: "Provide the employee's ID.",
+        default: "ID unlisted."
+    }, 
+    { 
+        type: "input", 
+        name: "email", 
+        message: "Provide employee's email address.",
+        default: "email@none"
+    },
     {
         type: 'input',
-        name: 'school',
-        message: "What school does this intern attend?",
-        when: (answers) => answers.role ==="Intern"
+        name: 'gitHub',
+        message: "What school do they attend??",
+        when: (answers) => answers.role ==="Intern",
     }, 
-    {
-        type: "confirm", 
-        name: "continue", 
-        message: "Would you like to add another employee?"
-    }
+])
+.then(function(answers){
+    console.log(answers);
+    continuePrompt();
+})
 }
 
 function promptManager() {
-questions,
+    inquirer.prompt(
+        [
+    {
+        type: "input", 
+        name: "name", 
+        message: "Please state the employee's name.",
+        default: "No name provided."
+    }, 
+    { 
+        type: "input", 
+        name: "id", 
+        message: "Provide the employee's ID.",
+        default: "ID unlisted."
+    }, 
+    { 
+        type: "input", 
+        name: "email", 
+        message: "Provide employee's email address.",
+        default: "email@none"
+    },
     {
         type: 'input',
         name: 'officeNumber',
-        message: "What is this manager's office number?",
-        when: (answers) => answers.role ==="Manager"
+        message: "What is their office number?",
+        when: (answers) => answers.role ==="Manager",
     }, 
-    {
-        type: "confirm", 
-        name: "continue", 
-        message: "Would you like to add another employee?"
-    }
+])
+.then(function(answers){
+    console.log(answers);
+    continuePrompt();
+})
 }
 
+function continuePrompt(){
+    inquirer.prompt([
+        {
+            type: "confirm", 
+            name: "continue", 
+            message: "Would you like to add another employee?"
+        },
+    ])
+    .then(function(answers){
+        console.log(answers);
+        if (answers.continue === true) {
+            return selectRole();
+        }
+        renderHTML()
+    })
+}
 selectRole()
 
 
@@ -121,4 +173,4 @@ selectRole()
 // and Intern classes should all extend from a class named Employee; see the directions
 // for further information. Be sure to test out each class and verify it generates an
 // object with the correct structure and methods. This structure will be crucial in order
-// for the provided `render` function to work! ```
+// for the provided `render` function to work! 
