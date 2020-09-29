@@ -66,6 +66,14 @@ function promptEngineer() {
 ])
 .then(function(answers){
     console.log(answers);
+    let newEmp = new Engineer (
+        answers.name,
+        answers.id,
+        answers.email,
+        "Engineer",
+        answers.gitHub,
+        );
+        employeesArr.push(newEmp)
     continuePrompt();
 })
 }
@@ -103,6 +111,7 @@ function promptIntern() {
         answers.name,
         answers.id,
         answers.email,
+        "Intern",
         answers.school
         );
         employeesArr.push(newEmp)
@@ -140,6 +149,14 @@ function promptManager() {
 ])
 .then(function(answers){
     console.log(answers);
+    let newEmp = new Manager (
+        answers.name,
+        answers.id,
+        answers.email,
+        "Manager",
+        answers.office,
+        );
+        employeesArr.push(newEmp)
     continuePrompt();
 })
 }
@@ -157,8 +174,13 @@ function continuePrompt(){
         if (answers.continue === true) {
             return selectRole();
         }
-        /// RENDER HTML
-        renderHTML(employeesArr)
+        console.log(employeesArr);
+        {
+            const a = render(employeesArr);
+            fs.writeFile(outputPath, a, (a) => {
+              if (a) return console.log(a);
+            });
+          };
     })
 }
 selectRole()

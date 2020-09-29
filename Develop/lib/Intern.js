@@ -8,10 +8,10 @@ class Intern extends Employee {
         this.school = school; 
         console.log("Intern, " + this.name + " has been added.")
     }
-    thisRole() {
+    getRole() {
         return "Intern";
     }
-    internSchool() {
+    getSchool() {
         return this.school;
     }
 }

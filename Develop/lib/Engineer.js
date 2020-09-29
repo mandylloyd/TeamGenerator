@@ -8,10 +8,10 @@ class Engineer extends Employee {
         this.github = github;
         console.log("Engineer, " + this.name + " has been added.")
     }
-    thisRole() {
+    getRole() {
         return "Engineer"
     }
-    engineersGithub() {
+    getGithub() {
         return this.github
     }
 }
