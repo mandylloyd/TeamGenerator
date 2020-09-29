@@ -59,7 +59,7 @@ function promptEngineer() {
     {
         type: 'input',
         name: 'gitHub',
-        message: "Enter the employee's gitHub username.",
+        message: "Enter employee's gitHub username.",
         when: (answers) => answers.role ==="Engineer",
     }, 
 ])
@@ -91,7 +91,7 @@ function promptIntern() {
     },
     {
         type: 'input',
-        name: 'gitHub',
+        name: 'school',
         message: "What school do they attend??",
         when: (answers) => answers.role ==="Intern",
     }, 
