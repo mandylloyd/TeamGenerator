@@ -61,7 +61,7 @@ function promptEngineer() {
         type: 'input',
         name: 'gitHub',
         message: "Enter employee's gitHub username.",
-        when: (answers) => answers.role ==="Engineer",
+        // when: (answers) => answers.role ==="Engineer",
     }, 
 ])
 .then(function(answers){
@@ -102,7 +102,7 @@ function promptIntern() {
         type: 'input',
         name: 'school',
         message: "What school do they attend??",
-        when: (answers) => answers.role ==="Intern",
+        // when: (answers) => answers.role ==="Intern",
     }, 
 ])
 .then(function(answers){
@@ -144,7 +144,7 @@ function promptManager() {
         type: 'input',
         name: 'officeNumber',
         message: "What is their office number?",
-        when: (answers) => answers.role ==="Manager",
+        // when: (answers) => answers.role ==="Manager",
     }, 
 ])
 .then(function(answers){
