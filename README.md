@@ -1,24 +1,24 @@
 # TeamGenerator
 
-Description
+# Description
 
 This is a software engineering team generator command line application. The application will prompt the user for information about the team manager and then information about the team members. The user can input any number of team members, and they may be a mix of engineers and interns. When the user has completed building the team, the application will create an HTML file that displays a nicely formatted team roster based on the information provided by the user.
 
-Installation
+# Installation
 
 Run an npm install to install all modules required.
 
 
-Usage
+# Usage
 
 This app will only run in the command-line terminal. Use npm node to run and answer the prompts that follow.
 
 
-License
+# License
 
 No licenses needed.
 
 
-License
+# License
 
 Jest testing files included in repo.
